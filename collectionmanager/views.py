@@ -10,5 +10,9 @@ def mycollection(request):
 def login(request):
     return render(request, 'login.html')
 
+def regitster(request):
+    return render(request, 'register.html')
+
+
 def othercollections(request):
     return render(request, 'othercollection.html')
