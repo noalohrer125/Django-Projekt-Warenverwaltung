@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from collectionmanager.views import home
+from collectionmanager.views import mycollection
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', home),
+    path('mycollection/', mycollection),
 ]
