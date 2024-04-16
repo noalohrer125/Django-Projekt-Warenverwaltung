@@ -18,9 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from collectionmanager.views import home
 from collectionmanager.views import mycollection
+from collectionmanager.views import login
+from collectionmanager.views import othercollections
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
     path('mycollection/', mycollection),
+    path('login/', login),
+    path('othercollections/', othercollections),
 ]

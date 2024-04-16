@@ -6,3 +6,9 @@ def home(request):
 
 def mycollection(request):
     return render(request, 'MyCollection.html')
+
+def login(request):
+    return render(request, 'login.html')
+
+def othercollections(request):
+    return render(request, 'othercollection.html')
