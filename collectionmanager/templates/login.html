@@ -5,26 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collectify</title>
-    <link rel="stylesheet" href="styles.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css">
 </head>
 <body>
     <div class="logo">
         <a href="http://127.0.0.1:8000/home/">
-            <img src="C:\Users\nl\Github\Django-Warenverwaltung\IMGs\Logo_Collectify.jpg" alt="Collectify Logo" width="100" height="100">
+            {% load static %}
+            <img src="{% static 'Logo_Collectify.jpg' %}" alt="Collectify Logo" width="80">
         </a>
-    </div>
-
-    <!-- Navigation Titles -->
-    <div class="navigationbar">
-        <a href="http://127.0.0.1:8000/home/">
-            <h2 class="inline_block, navigationtitle">Home</h2>
-        </a>
-        <a href="http://127.0.0.1:8000/mycollection/">
-            <h2 class="inline_block, navigationtitle">My Collection</h2
-                ></a>
-        <a href="http://127.0.0.1:8000/othercollections/">
-            <h2 class="inline_block, navigationtitle">Other Collections</h2>
-        </a> 
     </div>
 </body>
 </html>

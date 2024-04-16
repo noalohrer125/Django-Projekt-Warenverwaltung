@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collectify</title>
-    <link rel="stylesheet" href="styles.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css">
 </head>
 <body>
     <div class="logo">
         <a href="http://127.0.0.1:8000/home/">
-            <img src="C:\Users\nl\Github\Django-Warenverwaltung\IMGs\Logo_Collectify.jpg" alt="Collectify Logo" width="100" height="100">
+            {% load static %}
+            <img src="{% static 'Logo_Collectify.jpg' %}" alt="Collectify Logo" width="80">
         </a>
     </div>
 
@@ -21,15 +23,23 @@
 
     <!-- Navigation Titles -->
     <div class="navigationbar">
-        <a href="http://127.0.0.1:8000/home/">
-            <h2 class="inline_block, navigationtitle">Home</h2>
+        <a class="inline_block" href="http://127.0.0.1:8000/home/">
+            <h2 class="navigationtitle, currenttitel">Home</h2>
         </a>
-        <a href="http://127.0.0.1:8000/mycollection/">
-            <h2 class="inline_block, navigationtitle">My Collection</h2
-                ></a>
-        <a href="http://127.0.0.1:8000/othercollections/">
-            <h2 class="inline_block, navigationtitle">Other Collections</h2>
+        <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
+            <h2 class="navigationtitle">My Collection</h2></a>
+        <a class="inline_block" href="http://127.0.0.1:8000/othercollections/">
+            <h2 class="navigationtitle">Other Collections</h2>
         </a>
+    </div>
+    <div class="mainblock">
+        <h2>
+            Welcome to our Page!
+        </h2>
+        <p>
+            Are you a fanatic collector? Do you wanna have a simple overview over your hole Collection fast and easy? <br>
+            Than you are compleately ond the correct site. Collectify is a simple plattform to load up all your Items in a Collection up and have a very good overview over them.
+        </p>
     </div>
 </body>
 </html>
