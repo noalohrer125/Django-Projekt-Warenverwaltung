@@ -21,13 +21,20 @@
             <form method="post">
                 {% csrf_token %}
                 <div>
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username"
-                        name="username" required>
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password"
-                        name="password" required>
-                    <button type="submit">Login</button>
+                    <table>
+                        <tr>
+                            <td class="td1"><label for="uname">Username</label></td>
+                            <td class="td2"><input type="text" placeholder="Enter Username" name="username" required></td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><label for="password">Password</label></td>
+                            <td class="td2"><input type="password" placeholder="Enter Password" name="password" required></td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><button type="submit">Login</button></td>
+                            <td class="button-a, td2">No Account? Then <a href="http://127.0.0.1:8000/register/" class="button-register">Register</a> first</td>
+                        </tr>
+                    </table>
                 </div>
             </form>
         </div>
