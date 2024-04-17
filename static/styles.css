@@ -8,6 +8,10 @@ h1 {
     color: rgb(82, 0, 150);
 }
 
+h2 {
+    color: rgb(0, 255, 0); 
+}
+
 .logo {
     position: absolute; left: 20px; top: 20px;
 }
@@ -56,4 +60,11 @@ button:hover{
     top: 35%;
     left: 0;
     right: 0;
+}
+
+.loginform {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background-color: black;
 }
