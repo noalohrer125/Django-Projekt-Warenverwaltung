@@ -20,8 +20,8 @@ from collectionmanager.views import home
 from collectionmanager.views import mycollection
 from collectionmanager.views import login
 from collectionmanager.views import othercollections
-from collectionmanager.views import register
 from collectionmanager.views import logout
+from collectionmanager.views import sign_up
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,6 @@ urlpatterns = [
     path('mycollection/', mycollection),
     path('login/', login),
     path('othercollections/', othercollections),
-    path('register/', register),
+    path('sign_up/', sign_up),
     path('logout/', logout)
 ]

@@ -16,18 +16,47 @@
                     alt="Collectify Logo" width="80">
             </a>
         </div>
-
-            <!-- Navigation Titles -->
-            <div class="navigationbar">
-                <a class="inline_block" href="http://127.0.0.1:8000/home/">
-                    <h1 class="navigationtitle">Home</h1>
-                </a>
-                <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
-                    <h1 class="navigationtitle, currenttitel">My Collection</h1></a>
-                <a class="inline_block"
-                    href="http://127.0.0.1:8000/othercollections/">
-                    <h1 class="navigationtitle">Other Collections</h1>
-                </a>
+        {% if user.is_authenticated %}
+            <div class="login">
+                <a href="http://127.0.0.1:8000/logout/">Loguot</a>
             </div>
+        {% else %}
+            <!-- Login/Register -->
+            <div class="login">
+                <a href="http://127.0.0.1:8000/login/">Login / Register</a>
+            </div>
+        {% endif %}
+        <!-- Navigation Titles -->
+        <div class="navigationbar">
+            <a class="inline_block" href="http://127.0.0.1:8000/home/">
+                <h1 class="navigationtitle">Home</h1>
+            </a>
+            <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
+                <h1 class="navigationtitle, currenttitel">My Collection</h1></a>
+            <a class="inline_block"
+                href="http://127.0.0.1:8000/othercollections/">
+                <h1 class="navigationtitle">Other Collections</h1>
+            </a>
+        </div>
+        <div class="mycollection">
+            {% for ware in waren %}
+                <div class="collectionelement">
+                    <table>
+                        <tr>
+                            <td class="tdl"><img src="{{ ware.image_url }}" alt="Img of Product" width="100%"></td>
+                            <td class="tdr">{{ ware.name }} und {% if ware.price <= 100 %}{{ ware.price }}{%else%}über 100{% endif %} CHF</td>
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
+            <div class="addproduct">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {{form.name.label}}
+                    <button type="submit">Add Product +</button>
+                </form>
+            </div>
+        </div>        
     </body>
 </html>

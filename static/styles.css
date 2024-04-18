@@ -91,3 +91,27 @@ td {
 .td2 {
     width: 300px;
 }
+
+.sign_up_table {
+    text-align: left;
+    font-size: 120%;
+}
+
+.collectionelement {
+    border-bottom: solid rgba(0, 0, 0, 0.2);
+}
+
+.tdl {
+    width: 40%;
+}
+
+.tdr {
+    width: 60%;
+}
+
+.mycollection {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+}

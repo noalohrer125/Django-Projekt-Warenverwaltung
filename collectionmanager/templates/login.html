@@ -16,6 +16,15 @@
                     alt="Collectify Logo" width="80">
             </a>
         </div>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <script>
+                    alert('{{ message }}');
+                </script>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <div class="loginform">
             <h1>Login Form</h1>
             <form method="post">
@@ -32,7 +41,7 @@
                         </tr>
                         <tr>
                             <td class="td1"><button type="submit">Login</button></td>
-                            <td class="button-a, td2">No Account? Then <a href="http://127.0.0.1:8000/register/" class="button-register">Register</a> first</td>
+                            <td class="button-a, td2">No Account? Then <a href="http://127.0.0.1:8000/sign_up/" class="button-register">Register</a> first</td>
                         </tr>
                     </table>
                 </div>

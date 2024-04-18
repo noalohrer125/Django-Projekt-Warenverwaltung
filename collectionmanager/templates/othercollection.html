@@ -16,18 +16,27 @@
                     alt="Collectify Logo" width="80">
             </a>
         </div>
-
-            <!-- Navigation Titles -->
-            <div class="navigationbar">
-                <a class="inline_block" href="http://127.0.0.1:8000/home/">
-                    <h1 class="navigationtitle">Home</h1>
-                </a>
-                <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
-                    <h1 class="navigationtitle">My Collection</h1></a>
-                <a class="inline_block"
-                    href="http://127.0.0.1:8000/othercollections/">
-                    <h1 class="navigationtitle, currenttitel">Other Collections</h1>
-                </a>
+        {% if user.is_authenticated %}
+            <div class="login">
+                <a href="http://127.0.0.1:8000/logout/">Loguot</a>
             </div>
+        {% else %}
+            <!-- Login/Register -->
+            <div class="login">
+                <a href="http://127.0.0.1:8000/login/">Login / Register</a>
+            </div>
+        {% endif %}
+        <!-- Navigation Titles -->
+        <div class="navigationbar">
+            <a class="inline_block" href="http://127.0.0.1:8000/home/">
+                <h1 class="navigationtitle">Home</h1>
+            </a>
+            <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
+                <h1 class="navigationtitle">My Collection</h1></a>
+            <a class="inline_block"
+                href="http://127.0.0.1:8000/othercollections/">
+                <h1 class="navigationtitle, currenttitel">Other Collections</h1>
+            </a>
+        </div>
     </body>
 </html>
