@@ -49,12 +49,72 @@
                     </table>
                 </div>
             {% endfor %}
+            <script>
+                function hide_addproduct() {
+                    var x = document.getElementsByClassName("addproduct")[0];
+                    if (x.style.display === "block") {
+                        x.style.display = "none";
+                    }
+                    else {
+                        x.style.display = "block";
+                    }
+                }
+            </script>
+            <button class="Submit_button_addproduct" onclick="hide_addproduct()">Add Product +</button>
+            <button class="Submit_button_addproduct" onclick="hide_addproduct()">Add Category +</button>
             <div class="addproduct">
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    {{form.name.label}}
-                    <button type="submit">Add Product +</button>
+                    <table>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.Hersteller.label}}</td>
+                            <td>{{form.Hersteller}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.name.label}}</td>
+                            <td>{{form.name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.description.label}}</td>
+                            <td>{{form.description}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.price.label}}</td>
+                            <td>{{form.price}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.length.label}}</td>
+                            <td>{{form.length}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.width.label}}</td>
+                            <td>{{form.width}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.height.label}}</td>
+                            <td class="tdr">{{form.height}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.Kategorie.label}}</td>
+                            <td class="tdr">{{form.Kategorie}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.Geschichte.label}}</td>
+                            <td class="tdr">{{form.Geschichte}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.Regal.label}}</td>
+                            <td class="tdr">{{form.Regal}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">{{form.Eigentümer.label}}</td>
+                            <td class="tdr">{{form.Eigentümer}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl"><button type="submit">Submit</button></td>
+                            <td class="tdr"><button onclick="hide_addproduct()">Cancel</button></td>
+                        </tr>
+                    </table>
                 </form>
             </div>
         </div>        

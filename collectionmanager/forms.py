@@ -1,3 +1,4 @@
+from unicodedata import category
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -15,9 +16,12 @@ class RegisterForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + ('email',)
 
 from django import forms
-from .models import Waren
+from .models import Regale, Waren, Kategorie
 
 class WareForm(forms.ModelForm):
+    Kategorie = forms.ModelChoiceField(queryset=Kategorie.objects.all(), required=False)
+    Regal = forms.ModelChoiceField(queryset=Regale.objects.all(), required=False)
+
     class Meta:
         model = Waren
         fields = [
@@ -30,7 +34,15 @@ class WareForm(forms.ModelForm):
             'height',
             'Kategorie',
             'Regal',
-            'Kaufdatum',
             'Geschichte',
             'Eigentümer',
+            ]
+
+class CategoryForm(forms.ModelForm):
+
+    class Meta:
+        model = Kategorie
+        fields = [
+            'name',
+            'Beschreibung',
             ]

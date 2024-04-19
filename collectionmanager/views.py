@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from .forms import WareForm
 
 # Create your views here.
 def home(request):
@@ -10,8 +11,17 @@ def home(request):
 
 def mycollection(request):
     if request.user.is_authenticated:
-        form = WareForm()
-        return render(request, 'mycollection.html', {'form': form})
+        if request.method == 'POST':
+            form = WareForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+            else:
+                form = WareForm()
+            return render(request, 'MyCollection.html', {'form': form})
+        else:
+            form = WareForm()
+            return render(request, 'mycollection.html', {'form': form})
     else:
         return redirect('http://127.0.0.1:8000/login/')
 
@@ -51,14 +61,5 @@ def sign_up(request):
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
-from django.shortcuts import render
-from .forms import WareForm
 
-def add_product(request):
-    if request.method == 'POST':
-        form = WareForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form = WareForm()
-    return render(request, 'MyCollection.html', {'form': form})
+
