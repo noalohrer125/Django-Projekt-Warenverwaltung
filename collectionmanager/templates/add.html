@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Collectify</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css">
+    </head>
+    <body>
+        <div class="logo">
+            <a href="http://127.0.0.1:8000/home/">
+                {% load static %}
+                <img src="{% static 'Logo_Collectify.jpg' %}"
+                    alt="Collectify Logo" width="80">
+            </a>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="login">
+            <a href="http://127.0.0.1:8000/logout/">Loguot</a>
+        </div>
+        {% else %}
+        <!-- Login/Register -->
+        <div class="login">
+            <a href="http://127.0.0.1:8000/login/">Login / Register</a>
+        </div>
+        {% endif %}
+
+        <!-- Navigation Titles -->
+        <div class="navigationbar">
+            <a class="inline_block" href="http://127.0.0.1:8000/home/">
+                <h1 class="navigationtitle">Home</h1>
+            </a>
+            <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
+                <h1 class="navigationtitle">My Collection</h1></a>
+            <a class="inline_block"
+                href="http://127.0.0.1:8000/othercollections/">
+                <h1 class="navigationtitle">Other Collections</h1>
+            </a>
+        </div>
+        <script>
+            function hide_addproduct() {
+                var x = document.getElementsByClassName("addproduct")[0];
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                }
+                else {
+                    x.style.display = "block";
+                }
+            }
+        </script>
+        <div class="add_product_div">
+            <button class="Submit_button_addproduct"
+                onclick="hide_addproduct()">Add Product +</button>
+            <div class="addproduct">
+                <form method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.Hersteller.label}}</td>
+                            <td>{{form.Hersteller}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.name.label}}</td>
+                            <td>{{form.name}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.description.label}}</td>
+                            <td>{{form.description}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.price.label}}</td>
+                            <td>{{form.price}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.length.label}}</td>
+                            <td>{{form.length}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.width.label}}</td>
+                            <td>{{form.width}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.height.label}}</td>
+                            <td class="tdr">{{form.height}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.Kategorie.label}}</td>
+                            <td class="tdr">{{form.Kategorie}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.Geschichte.label}}</td>
+                            <td class="tdr">{{form.Geschichte}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.Regal.label}}</td>
+                            <td class="tdr">{{form.Regal}}</td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="sign_up_table, tdl">{{form.Eigentümer.label}}</td>
+                            <td class="tdr">{{form.Eigentümer}}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl"><button
+                                    type="submit">Submit</button></td>
+                            <td class="tdr"><button
+                                    onclick="hide_addproduct()">Cancel</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

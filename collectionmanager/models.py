@@ -7,6 +7,7 @@ class Kategorie(models.Model):
     Beschreibung = models.TextField()
 
 class Regale(models.Model):
+    name = models.CharField(max_length=50)
     anz_Fächer = models.IntegerField()
     bes_Fächer = models.IntegerField()
     Standort = models.CharField(max_length=200)

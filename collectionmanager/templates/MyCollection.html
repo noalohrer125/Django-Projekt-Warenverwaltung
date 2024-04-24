@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,14 +16,14 @@
             </a>
         </div>
         {% if user.is_authenticated %}
-            <div class="login">
-                <a href="http://127.0.0.1:8000/logout/">Loguot</a>
-            </div>
+        <div class="login">
+            <a href="http://127.0.0.1:8000/logout/">Loguot</a>
+        </div>
         {% else %}
-            <!-- Login/Register -->
-            <div class="login">
-                <a href="http://127.0.0.1:8000/login/">Login / Register</a>
-            </div>
+        <!-- Login/Register -->
+        <div class="login">
+            <a href="http://127.0.0.1:8000/login/">Login / Register</a>
+        </div>
         {% endif %}
         <!-- Navigation Titles -->
         <div class="navigationbar">
@@ -40,83 +39,55 @@
         </div>
         <div class="mycollection">
             {% for ware in waren %}
-                <div class="collectionelement">
-                    <table>
-                        <tr>
-                            <td class="tdl"><img src="{{ ware.image_url }}" alt="Img of Product" width="100%"></td>
-                            <td class="tdr">{{ ware.name }} und {% if ware.price <= 100 %}{{ ware.price }}{%else%}über 100{% endif %} CHF</td>
-                        </tr>
-                    </table>
-                </div>
-            {% endfor %}
-            <script>
-                function hide_addproduct() {
-                    var x = document.getElementsByClassName("addproduct")[0];
-                    if (x.style.display === "block") {
-                        x.style.display = "none";
-                    }
-                    else {
-                        x.style.display = "block";
-                    }
-                }
-            </script>
-            <button class="Submit_button_addproduct" onclick="hide_addproduct()">Add Product +</button>
-            <button class="Submit_button_addproduct" onclick="hide_addproduct()">Add Category +</button>
-            <div class="addproduct">
-                <form method="post">
-                    {% csrf_token %}
-                    <table>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.Hersteller.label}}</td>
-                            <td>{{form.Hersteller}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.name.label}}</td>
-                            <td>{{form.name}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.description.label}}</td>
-                            <td>{{form.description}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.price.label}}</td>
-                            <td>{{form.price}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.length.label}}</td>
-                            <td>{{form.length}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.width.label}}</td>
-                            <td>{{form.width}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.height.label}}</td>
-                            <td class="tdr">{{form.height}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.Kategorie.label}}</td>
-                            <td class="tdr">{{form.Kategorie}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.Geschichte.label}}</td>
-                            <td class="tdr">{{form.Geschichte}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.Regal.label}}</td>
-                            <td class="tdr">{{form.Regal}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl">{{form.Eigentümer.label}}</td>
-                            <td class="tdr">{{form.Eigentümer}}</td>
-                        </tr>
-                        <tr>
-                            <td class="sign_up_table, tdl"><button type="submit">Submit</button></td>
-                            <td class="tdr"><button onclick="hide_addproduct()">Cancel</button></td>
-                        </tr>
-                    </table>
-                </form>
+            <div class="collectionelement">
+                <table class="collectiontable">
+                    <tr>
+                        <td class="tdl">
+                            <img src="{{ ware.image_url }}" alt="Img of Product"
+                                width="100%">
+                        </td>
+                        <td class="tdr">
+                            <h2 class="underline">{{ ware.name }}</h2>
+                            <script>
+                                    function contract_expand_details() {
+                                        let x = document.getElementsByClassName("collecttable")[0];
+                                        if (x.style.display === "inline") {
+                                            x.style.display = "none";
+                                        }
+                                        else {
+                                            x.style.display = "inline";
+                                        }
+                                    }
+                                </script>
+                            <button onclick="contract_expand_details()">Contract
+                                or Expand Details</button>
+                            <br>
+                            <table class="collecttable">
+                                <tr>
+                                    <td class="td3"><h3>Brand:</h3></td>
+                                    <td class="td4">{{ware.Hersteller}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="td3"><h3>Size:</h3></td>
+                                    <td class="td4">{{ware.length}} x
+                                        {{ware.height}} x {{ware.width}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="td3"><h3>Product
+                                            Category:</h3></td>
+                                    <td class="td4">{{ware.Kategorie.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="td3"><h3>Product Shelf:</h3></td>
+                                    <td class="td4">{{ware.Regal.name}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </div>
-        </div>        
+            {% endfor %}
+        </div>
+        <a class="addproduct_link" href="http://127.0.0.1:8000/addproduct/">Add Product</a>
     </body>
 </html>

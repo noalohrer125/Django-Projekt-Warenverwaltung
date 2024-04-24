@@ -22,6 +22,7 @@ from collectionmanager.views import login
 from collectionmanager.views import othercollections
 from collectionmanager.views import logout
 from collectionmanager.views import sign_up
+from collectionmanager.views import add_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +31,6 @@ urlpatterns = [
     path('login/', login),
     path('othercollections/', othercollections),
     path('sign_up/', sign_up),
-    path('logout/', logout)
+    path('logout/', logout),
+    path('addproduct/', add_product),
 ]

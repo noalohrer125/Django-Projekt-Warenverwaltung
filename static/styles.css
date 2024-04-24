@@ -5,36 +5,42 @@
 }
 
 h1 {
+    font-size: 300%;
     color: rgb(82, 0, 150);
 }
 
 h2 {
-    font-size: 300%;
+    color: rgb(13, 0, 192);
+    font-size: 250%;
 }
 
 .logo {
-    position: absolute; left: 20px; top: 20px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
 }
 
 .navigationbar {
-    padding: 10px;
+    padding: 8px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    position: absolute; 
+    position: absolute;
     top: 12%;
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-around; /* Optional: für gleichmäßigen Abstand zwischen den Elementen */
+    justify-content: space-around;
+    /* Optional: für gleichmäßigen Abstand zwischen den Elementen */
 }
 
 .inline_block {
     flex: 1;
-    text-align: center; /* Optional: zentriert den Text innerhalb des Elements */
+    text-align: center;
+    /* Optional: zentriert den Text innerhalb des Elements */
 }
 
 .navigationtitle {
     margin: auto;
-    width: 40%;
+    width: 60%;
 }
 
 button {
@@ -42,19 +48,20 @@ button {
     border-radius: 5px;
 }
 
-button:hover{
+button:hover {
     background-color: #00ff0d;
     cursor: pointer;
 }
 
 .login {
-    position: absolute; top: 20px; right: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 .currenttitel {
     border-bottom: 1px solid rgba(0, 0, 0, 0.02);
     margin: auto;
-    width: 40%;
     border-radius: 15px;
     text-decoration: solid underline;
 }
@@ -75,7 +82,7 @@ button:hover{
     transform: translate(-50%, -50%);
 }
 
-.button-register{
+.button-register {
     color: rgb(0, 110, 255);
     text-decoration: solid underline;
 }
@@ -98,16 +105,19 @@ td {
 }
 
 .collectionelement {
-    border-bottom: solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 2%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .tdl {
-    width: 40%;
+    width: 30%;
     height: auto;
 }
 
 .tdr {
-    width: 60%;
+    width: 70%;
     height: auto;
 }
 
@@ -120,4 +130,51 @@ td {
 
 .addproduct {
     display: none;
+}
+
+.underline {
+    text-decoration: solid underline;
+}
+
+li {
+    width: 100%;
+}
+
+.collectiontable {
+    width: 100%;
+    height: auto;
+}
+
+.collecttable {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+table {
+    width: 100%;
+}
+
+.td3 {
+    width: 60%;
+}
+
+.add_product_div {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+}
+
+.addproduct_link {
+    position: absolute;
+    bottom: 5%;
+    left: 40%;
+    right: 0;
+}
+
+a:hover {
+    color: blue;
+    cursor: pointer;
+    text-decoration: solid underline;
 }

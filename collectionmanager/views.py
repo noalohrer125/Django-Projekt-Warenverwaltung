@@ -9,21 +9,43 @@ from .forms import WareForm
 def home(request):
     return render(request, 'Home.html')
 
-def mycollection(request):
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            form = WareForm(request.POST)
+from django.shortcuts import render, redirect
+from .models import Waren  # Stellen Sie sicher, dass Sie Ihr Modell entsprechend importieren
+from .forms import WareForm  # Ihr Formular-Import
 
-            if form.is_valid():
-                form.save()
-            else:
-                form = WareForm()
-            return render(request, 'MyCollection.html', {'form': form})
-        else:
+def add_product(request):
+    if not request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/login')  # Verwenden Sie den Namen der URL für die Umleitung
+
+    form = WareForm(request.POST or None)  # Vereinfachte Formularinitialisierung
+    if request.method == 'POST':
+        if form.is_valid():
+            ware = form.save(commit=False)
+            ware.Eigentümer = request.user  # Stellen Sie sicher, dass der Benutzer als Eigentümer gesetzt ist, wenn das Modell ein `owner` Feld hat
+            ware.save()
+            # Nach dem Speichern, das Formular neu initialisieren oder Seite neu laden, um das neue Objekt zu sehen
             form = WareForm()
-            return render(request, 'mycollection.html', {'form': form})
-    else:
-        return redirect('http://127.0.0.1:8000/login/')
+
+    ware = Waren.objects.filter(Eigentümer=request.user)  # Abrufen der Produkte, die dem Benutzer gehören
+    print('error')
+    return render(request, 'add.html', {'form': form})
+
+def mycollection(request):
+    if not request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/login')  # Verwenden Sie den Namen der URL für die Umleitung
+
+    form = WareForm(request.POST or None)  # Vereinfachte Formularinitialisierung
+    if request.method == 'POST':
+        if form.is_valid():
+            ware = form.save(commit=False)
+            ware.Eigentümer = request.user  # Stellen Sie sicher, dass der Benutzer als Eigentümer gesetzt ist, wenn das Modell ein `owner` Feld hat
+            ware.save()
+            # Nach dem Speichern, das Formular neu initialisieren oder Seite neu laden, um das neue Objekt zu sehen
+            form = WareForm()
+
+    ware = Waren.objects.filter(Eigentümer=request.user)  # Abrufen der Produkte, die dem Benutzer gehören
+    print('error')
+    return render(request, 'mycollection.html', {'form': form, 'waren': ware})
 
 def othercollections(request):
     return render(request, 'othercollection.html')
@@ -60,6 +82,3 @@ def sign_up(request):
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
-
-
-
