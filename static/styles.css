@@ -105,7 +105,7 @@ td {
 }
 
 .collectionelement {
-    margin-bottom: 2%;
+    margin-bottom: 6%;
     border-radius: 5px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
@@ -121,6 +121,17 @@ td {
     height: auto;
 }
 
+.addproduct_link {
+    text-align: center;
+    font-size: 120%;
+    position: absolute;
+    left: 35%;
+    right: 45%;
+    bottom: 1%;
+    border-radius: 10px;
+    border: solid black 1px;
+}
+
 .mycollection {
     position: absolute;
     top: 30%;
@@ -129,7 +140,7 @@ td {
 }
 
 .addproduct {
-    display: none;
+    display: inline;
 }
 
 .underline {
@@ -166,14 +177,7 @@ table {
     width: 50%;
 }
 
-.addproduct_link {
-    position: absolute;
-    bottom: 5%;
-    left: 40%;
-    right: 0;
-}
-
-a:hover {
+.addproduct_link:hover {
     color: blue;
     cursor: pointer;
     text-decoration: solid underline;

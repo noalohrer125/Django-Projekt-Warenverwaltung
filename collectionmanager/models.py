@@ -14,7 +14,7 @@ class Regale(models.Model):
 
 class Waren(models.Model):
     Hersteller = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     length = models.DecimalField(max_digits=5, decimal_places=2)
@@ -24,3 +24,4 @@ class Waren(models.Model):
     Regal = models.ForeignKey(Regale, on_delete=models.CASCADE, default='')
     Geschichte = models.TextField()
     Eigentümer = models.ForeignKey(User, on_delete=models.CASCADE)
+    bild = models.ImageField(upload_to='ware_bilder/')

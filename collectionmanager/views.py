@@ -15,20 +15,20 @@ from .forms import WareForm  # Ihr Formular-Import
 
 def add_product(request):
     if not request.user.is_authenticated:
-        return redirect('http://127.0.0.1:8000/login')  # Verwenden Sie den Namen der URL für die Umleitung
+        return redirect('login')  # Verwenden Sie den Namen der URL für die Umleitung
 
-    form = WareForm(request.POST or None)  # Vereinfachte Formularinitialisierung
     if request.method == 'POST':
+        form = WareForm(request.POST, request.FILES)
         if form.is_valid():
             ware = form.save(commit=False)
-            ware.Eigentümer = request.user  # Stellen Sie sicher, dass der Benutzer als Eigentümer gesetzt ist, wenn das Modell ein `owner` Feld hat
+            ware.Eigentümer = request.user
             ware.save()
-            # Nach dem Speichern, das Formular neu initialisieren oder Seite neu laden, um das neue Objekt zu sehen
-            form = WareForm()
+            return redirect('http://127.0.0.1:8000/mycollection')  # Umleiten nach dem Speichern
+    else:
+        form = WareForm()
 
-    ware = Waren.objects.filter(Eigentümer=request.user)  # Abrufen der Produkte, die dem Benutzer gehören
-    print('error')
     return render(request, 'add.html', {'form': form})
+
 
 def mycollection(request):
     if not request.user.is_authenticated:
@@ -82,3 +82,18 @@ def sign_up(request):
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from .models import Waren
+
+def delete_product(request, Name):
+    if request.method == 'POST':
+        # Verwende get_object_or_404 für bessere Fehlerbehandlung
+        element = get_object_or_404(Waren, name=Name)
+        if element:
+            element
+        element.delete()
+        return HttpResponseRedirect('http://127.0.0.1:8000/mycollection/')
+    else:
+        return redirect('http://127.0.0.1:8000/mycollection/')

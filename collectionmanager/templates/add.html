@@ -34,89 +34,118 @@
             </a>
             <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
                 <h1 class="navigationtitle">My Collection</h1></a>
-            <a class="inline_block"
-                href="http://127.0.0.1:8000/othercollections/">
+            <a class="inline_block" href="http://127.0.0.1:8000/othercollections/">
                 <h1 class="navigationtitle">Other Collections</h1>
             </a>
         </div>
-        <script>
-            function hide_addproduct() {
-                var x = document.getElementsByClassName("addproduct")[0];
-                if (x.style.display === "block") {
-                    x.style.display = "none";
-                }
-                else {
-                    x.style.display = "block";
-                }
-            }
-        </script>
         <div class="add_product_div">
-            <button class="Submit_button_addproduct"
-                onclick="hide_addproduct()">Add Product +</button>
             <div class="addproduct">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <table>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.Hersteller.label}}</td>
-                            <td>{{form.Hersteller}}</td>
+                                class="sign_up_table, tdl">{{form.Hersteller.label}}
+                            </td>
+                            <td>
+                                {{form.Hersteller}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.name.label}}</td>
-                            <td>{{form.name}}</td>
+                                class="sign_up_table, tdl">{{form.name.label}}
+                            </td>
+                            <td>
+                                {{form.name}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.description.label}}</td>
-                            <td>{{form.description}}</td>
+                                class="sign_up_table, tdl">{{form.description.label}}
+                            </td>
+                            <td>
+                                {{form.description}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.price.label}}</td>
-                            <td>{{form.price}}</td>
+                                class="sign_up_table, tdl">{{form.price.label}}
+                            </td>
+                            <td>
+                                {{form.price}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.length.label}}</td>
-                            <td>{{form.length}}</td>
+                                class="sign_up_table, tdl">{{form.length.label}}
+                            </td>
+                            <td>
+                                {{form.length}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.width.label}}</td>
-                            <td>{{form.width}}</td>
+                                class="sign_up_table, tdl">{{form.width.label}}
+                            </td>
+                            <td>
+                                {{form.width}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.height.label}}</td>
-                            <td class="tdr">{{form.height}}</td>
+                                class="sign_up_table, tdl">{{form.height.label}}
+                            </td>
+                            <td class="tdr">
+                                {{form.height}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.Kategorie.label}}</td>
-                            <td class="tdr">{{form.Kategorie}}</td>
+                                class="sign_up_table, tdl">{{form.Kategorie.label}}
+                            </td>
+                            <td class="tdr">
+                                {{form.Kategorie}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.Geschichte.label}}</td>
-                            <td class="tdr">{{form.Geschichte}}</td>
+                                class="sign_up_table, tdl">{{form.Geschichte.label}}
+                            </td>
+                            <td class="tdr">
+                                {{form.Geschichte}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.Regal.label}}</td>
-                            <td class="tdr">{{form.Regal}}</td>
+                                class="sign_up_table, tdl">{{form.Regal.label}}
+                            </td>
+                            <td class="tdr">
+                                {{form.Regal}}
+                            </td>
                         </tr>
                         <tr>
                             <td
-                                class="sign_up_table, tdl">{{form.Eigentümer.label}}</td>
-                            <td class="tdr">{{form.Eigentümer}}</td>
+                                class="sign_up_table, tdl">{{form.Eigentümer.label}}
+                            </td>
+                            <td class="tdr">
+                                {{form.Eigentümer}}
+                            </td>
                         </tr>
                         <tr>
-                            <td class="sign_up_table, tdl"><button
-                                    type="submit">Submit</button></td>
-                            <td class="tdr"><button
-                                    onclick="hide_addproduct()">Cancel</button></td>
+                            <td class="sign_up_table, tdl">{{ form.bild.label }}</td>
+                            <td>{{ form.bild }}</td>
+                        </tr>
+                        <tr>
+                            <td class="sign_up_table, tdl">
+                                <button type="submit">Submit</button>
+                            </td>
+                            <td class="tdr">
+                                <button>
+                                    <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
+                                        Cancel
+                                    </a>
+                                </button>
+                            </td>
                         </tr>
                     </table>
                 </form>

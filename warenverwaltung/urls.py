@@ -23,6 +23,9 @@ from collectionmanager.views import othercollections
 from collectionmanager.views import logout
 from collectionmanager.views import sign_up
 from collectionmanager.views import add_product
+from django.conf import settings
+from django.conf.urls.static import static
+from collectionmanager.views import delete_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,4 +36,5 @@ urlpatterns = [
     path('sign_up/', sign_up),
     path('logout/', logout),
     path('addproduct/', add_product),
-]
+    path('delete_product/<str:Name>/', delete_product, name='delete_product'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -36,6 +36,7 @@ class WareForm(forms.ModelForm):
             'Regal',
             'Geschichte',
             'Eigentümer',
+            'bild',
             ]
 
 class CategoryForm(forms.ModelForm):

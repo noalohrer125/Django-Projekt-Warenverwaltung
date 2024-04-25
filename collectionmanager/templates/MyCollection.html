@@ -11,8 +11,7 @@
         <div class="logo">
             <a href="http://127.0.0.1:8000/home/">
                 {% load static %}
-                <img src="{% static 'Logo_Collectify.jpg' %}"
-                    alt="Collectify Logo" width="80">
+                <img src="{% static 'Logo_Collectify.jpg' %}" alt="Collectify Logo" width="80">
             </a>
         </div>
         {% if user.is_authenticated %}
@@ -31,7 +30,8 @@
                 <h1 class="navigationtitle">Home</h1>
             </a>
             <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
-                <h1 class="navigationtitle, currenttitel">My Collection</h1></a>
+                <h1 class="navigationtitle, currenttitel">My Collection</h1>
+            </a>
             <a class="inline_block"
                 href="http://127.0.0.1:8000/othercollections/">
                 <h1 class="navigationtitle">Other Collections</h1>
@@ -42,44 +42,52 @@
             <div class="collectionelement">
                 <table class="collectiontable">
                     <tr>
+                        <form action="{% url 'delete_product' Name=ware.name %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete">
+                        </form>
+                        
                         <td class="tdl">
-                            <img src="{{ ware.image_url }}" alt="Img of Product"
-                                width="100%">
+                            <img src="{{ ware.bild.url }}" alt="Bild der Ware" width="100%">
                         </td>
                         <td class="tdr">
                             <h2 class="underline">{{ ware.name }}</h2>
-                            <script>
-                                    function contract_expand_details() {
-                                        let x = document.getElementsByClassName("collecttable")[0];
-                                        if (x.style.display === "inline") {
-                                            x.style.display = "none";
-                                        }
-                                        else {
-                                            x.style.display = "inline";
-                                        }
-                                    }
-                                </script>
-                            <button onclick="contract_expand_details()">Contract
-                                or Expand Details</button>
+                            <button onclick="contract_expand_details(this)">
+                                Contract or Expand Details
+                            </button>
                             <br>
-                            <table class="collecttable">
+                            <table class="collecttable" style="display: none;">
                                 <tr>
-                                    <td class="td3"><h3>Brand:</h3></td>
-                                    <td class="td4">{{ware.Hersteller}}</td>
+                                    <td class="td3">
+                                        <h3>Brand:</h3>
+                                    </td>
+                                    <td class="td4">
+                                        {{ ware.Hersteller }}
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="td3"><h3>Size:</h3></td>
-                                    <td class="td4">{{ware.length}} x
-                                        {{ware.height}} x {{ware.width}}</td>
+                                    <td class="td3"><h3>
+                                        Size:</h3>
+                                    </td>
+                                    <td class="td4">
+                                        {{ ware.length }} x {{ ware.height }} x {{ ware.width }}
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="td3"><h3>Product
-                                            Category:</h3></td>
-                                    <td class="td4">{{ware.Kategorie.name}}</td>
+                                    <td class="td3">
+                                        <h3>Product Category:</h3>
+                                    </td>
+                                    <td class="td4">
+                                        {{ ware.Kategorie.name }}
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="td3"><h3>Product Shelf:</h3></td>
-                                    <td class="td4">{{ware.Regal.name}}</td>
+                                    <td class="td3">
+                                        <h3>Product Shelf:</h3>
+                                    </td>
+                                    <td class="td4">
+                                        {{ ware.Regal.name }}
+                                    </td>
                                 </tr>
                             </table>
                         </td>
@@ -87,7 +95,17 @@
                 </table>
             </div>
             {% endfor %}
+            <script>
+                function contract_expand_details(button) {
+                    var detailsTable = button.nextElementSibling.nextElementSibling;
+                    if (detailsTable.style.display === "none") {
+                        detailsTable.style.display = "table";
+                    } else {
+                        detailsTable.style.display = "none";
+                    }
+                }
+            </script>
+            <a class="addproduct_link" href="http://127.0.0.1:8000/addproduct/">Add Product</a>
         </div>
-        <a class="addproduct_link" href="http://127.0.0.1:8000/addproduct/">Add Product</a>
     </body>
 </html>
