@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import WareForm
+from .forms import CategoryForm, WareForm
 
 # Create your views here.
 def home(request):
@@ -13,9 +12,25 @@ from django.shortcuts import render, redirect
 from .models import Waren  # Stellen Sie sicher, dass Sie Ihr Modell entsprechend importieren
 from .forms import WareForm  # Ihr Formular-Import
 
+def add_category(request):
+    if not request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/login')
+    
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category = form.save(commit=False)
+            category.save()
+            return redirect('http://127.0.0.1:8000/mycollection')
+        
+    else:
+        form = CategoryForm()
+    
+    return render(request, 'add_category.html', {'form': form})
+
 def add_product(request):
     if not request.user.is_authenticated:
-        return redirect('login')  # Verwenden Sie den Namen der URL für die Umleitung
+        return redirect('http://127.0.0.1:8000/login')  # Verwenden Sie den Namen der URL für die Umleitung
 
     if request.method == 'POST':
         form = WareForm(request.POST, request.FILES)
@@ -24,11 +39,12 @@ def add_product(request):
             ware.Eigentümer = request.user
             ware.save()
             return redirect('http://127.0.0.1:8000/mycollection')  # Umleiten nach dem Speichern
+        else:
+            print('Productname is allready used. Please chose an other one!')
     else:
         form = WareForm()
 
-    return render(request, 'add.html', {'form': form})
-
+    return render(request, 'add_product.html', {'form': form})
 
 def mycollection(request):
     if not request.user.is_authenticated:
@@ -44,7 +60,6 @@ def mycollection(request):
             form = WareForm()
 
     ware = Waren.objects.filter(Eigentümer=request.user)  # Abrufen der Produkte, die dem Benutzer gehören
-    print('error')
     return render(request, 'mycollection.html', {'form': form, 'waren': ware})
 
 def othercollections(request):
@@ -91,8 +106,6 @@ def delete_product(request, Name):
     if request.method == 'POST':
         # Verwende get_object_or_404 für bessere Fehlerbehandlung
         element = get_object_or_404(Waren, name=Name)
-        if element:
-            element
         element.delete()
         return HttpResponseRedirect('http://127.0.0.1:8000/mycollection/')
     else:

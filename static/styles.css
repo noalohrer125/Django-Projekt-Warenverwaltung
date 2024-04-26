@@ -82,6 +82,10 @@ button:hover {
     transform: translate(-50%, -50%);
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .button-register {
     color: rgb(0, 110, 255);
     text-decoration: solid underline;

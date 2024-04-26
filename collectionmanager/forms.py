@@ -13,14 +13,17 @@ class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=False)
     class Meta:
         model=User
-        fields = UserCreationForm.Meta.fields + ('email',)
+        fields = [
+            'username',
+            'password1',
+            'password2',
+            'email',
+            ]
 
 from django import forms
 from .models import Regale, Waren, Kategorie
 
 class WareForm(forms.ModelForm):
-    Kategorie = forms.ModelChoiceField(queryset=Kategorie.objects.all(), required=False)
-    Regal = forms.ModelChoiceField(queryset=Regale.objects.all(), required=False)
 
     class Meta:
         model = Waren
