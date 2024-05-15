@@ -28,18 +28,18 @@ class WareForm(forms.ModelForm):
     class Meta:
         model = Waren
         fields = [
-            'Hersteller',
+            'producer',
             'name',
             'description',
             'price',
             'length',
             'width',
             'height',
-            'Kategorie',
-            'Regal',
-            'Geschichte',
-            'Eigentümer',
-            'bild',
+            'category',
+            'shelf',
+            'story',
+            'owner',
+            'image',
             ]
 
 class CategoryForm(forms.ModelForm):
@@ -48,5 +48,5 @@ class CategoryForm(forms.ModelForm):
         model = Kategorie
         fields = [
             'name',
-            'Beschreibung',
+            'description',
             ]

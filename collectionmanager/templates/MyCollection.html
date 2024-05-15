@@ -44,7 +44,7 @@
                         </form>
                         
                         <td class="tdl">
-                            <img src="{{ ware.bild.url }}" alt="Bild der Ware" width="100%">
+                            <img src="{{ ware.image.url }}" alt="Bild der Ware" width="100%">
                         </td>
                         <td class="tdr">
                             <h2 class="underline">{{ ware.name }}</h2>
@@ -58,7 +58,7 @@
                                         <h3>Brand:</h3>
                                     </td>
                                     <td class="td4">
-                                        {{ ware.Hersteller }}
+                                        {{ ware.producer }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -74,7 +74,7 @@
                                         <h3>Product Category:</h3>
                                     </td>
                                     <td class="td4">
-                                        {{ ware.Kategorie.name }}
+                                        {{ ware.category.name }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -82,7 +82,7 @@
                                         <h3>Product Shelf:</h3>
                                     </td>
                                     <td class="td4">
-                                        {{ ware.Regal.name }}
+                                        {{ ware.shelf.name }}
                                     </td>
                                 </tr>
                             </table>

@@ -54,12 +54,12 @@ def mycollection(request):
     if request.method == 'POST':
         if form.is_valid():
             ware = form.save(commit=False)
-            ware.Eigentümer = request.user  # Stellen Sie sicher, dass der Benutzer als Eigentümer gesetzt ist, wenn das Modell ein `owner` Feld hat
+            ware.owner = request.user  # Stellen Sie sicher, dass der Benutzer als Eigentümer gesetzt ist, wenn das Modell ein `owner` Feld hat
             ware.save()
             # Nach dem Speichern, das Formular neu initialisieren oder Seite neu laden, um das neue Objekt zu sehen
             form = WareForm()
 
-    ware = Waren.objects.filter(Eigentümer=request.user)  # Abrufen der Produkte, die dem Benutzer gehören
+    ware = Waren.objects.filter(owner=request.user)  # Abrufen der Produkte, die dem Benutzer gehören
     return render(request, 'mycollection.html', {'form': form, 'waren': ware})
 
 def othercollections(request):
