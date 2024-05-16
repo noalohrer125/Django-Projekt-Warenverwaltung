@@ -38,11 +38,10 @@
             <div class="collectionelement">
                 <table class="collectiontable">
                     <tr>
-                        <form action="{% url 'delete_product' Name=ware.name %}" method="post">
+                        <form class="delete_product" action="{% url 'delete_product' Name=ware.name %}" method="post">
                             {% csrf_token %}
-                            <input type="submit" value="Delete">
+                            <input id="delete" type="submit" value="Delete">
                         </form>
-                        
                         <td class="tdl">
                             <img src="{{ ware.image.url }}" alt="Bild der Ware" width="100%">
                         </td>

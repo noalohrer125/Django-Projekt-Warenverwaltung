@@ -3,14 +3,17 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import CategoryForm, WareForm
+from .forms import RegisterForm
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from .models import Waren
+from django.shortcuts import render, redirect
+from .models import Waren  # Stellen Sie sicher, dass Sie Ihr Modell entsprechend importieren
+from .forms import WareForm  # Ihr Formular-Import
 
 # Create your views here.
 def home(request):
     return render(request, 'Home.html')
-
-from django.shortcuts import render, redirect
-from .models import Waren  # Stellen Sie sicher, dass Sie Ihr Modell entsprechend importieren
-from .forms import WareForm  # Ihr Formular-Import
 
 def add_category(request):
     if not request.user.is_authenticated:
@@ -54,7 +57,6 @@ def mycollection(request):
     if request.method == 'POST':
         if form.is_valid():
             ware = form.save(commit=False)
-            ware.owner = request.user  # Stellen Sie sicher, dass der Benutzer als Eigentümer gesetzt ist, wenn das Modell ein `owner` Feld hat
             ware.save()
             # Nach dem Speichern, das Formular neu initialisieren oder Seite neu laden, um das neue Objekt zu sehen
             form = WareForm()
@@ -67,12 +69,14 @@ def othercollections(request):
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
+        username = request.POST["username"] # Username aus Formular in Variable username speichern
+        password = request.POST["password"] # Passwort aus Formular in Variable password speichern
+        user = authenticate(request, username=username, password=password) # Ist der Username in der DB vorhanden? Ist das Passwort in der DB vohanden und gehört es zum eingegebenen User?
+        # Wenn der User valide ist wird er angemeldet und auf die Home Seite umgeleitet
         if user is not None:
             auth_login(request, user)
             return redirect('http://127.0.0.1:8000/home/')
+        # Wenn die Userinformationen inkorrekt sind erscheint eine Nachricht mit 'Login Incorrect' und der User wird auf die Login Seite umgeleitet
         else:
             messages.info(request, 'Login incorrect!')
             return redirect('http://127.0.0.1:8000/login/')
@@ -80,10 +84,8 @@ def login(request):
         return render(request, 'login.html')
 
 def logout(request):
-    auth_logout(request)
-    return redirect('http://127.0.0.1:8000/home/')
-
-from .forms import RegisterForm
+    auth_logout(request) # User wird ausgeloggt
+    return redirect('http://127.0.0.1:8000/home/') # User wird auf Home Seite umgeleitet
 
 def sign_up(request):
     if request.method == 'POST':
@@ -93,14 +95,12 @@ def sign_up(request):
             return redirect('http://127.0.0.1:8000/login/')
         else:
             if request:
-                messages.info(request, 'You must define a username and your password must have at least 8 characters!')
+                messages.info(request, 'You must define a unique username and your password must contain at least 8 characters!')
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
-from .models import Waren
+
 
 def delete_product(request, Name):
     if request.method == 'POST':

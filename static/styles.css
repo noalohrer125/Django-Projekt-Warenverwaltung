@@ -16,12 +16,12 @@ h2 {
 
 .logo {
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 1%;
+    top: 2%;
 }
 
 .navigationbar {
-    padding: 8px;
+    padding: 1%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 12%;
@@ -55,14 +55,13 @@ button:hover {
 
 .login {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1%;
+    right: 1%;
 }
 
 .currenttitel {
     border-bottom: 1px solid rgba(0, 0, 0, 0.02);
     margin: auto;
-    border-radius: 15px;
     text-decoration: solid underline;
 }
 
@@ -185,4 +184,20 @@ table {
     color: blue;
     cursor: pointer;
     text-decoration: solid underline;
+}
+
+.delete_product {
+    position: absolute;
+    left: 100;
+    top: 0;
+}
+
+#delete:hover {
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input:hover {
+    cursor: pointer;
+    border-radius: 5px;
 }
