@@ -1,52 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Collectify</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css">
-    </head>
-    <body>
-        <div class="logo">
-            <a href="http://127.0.0.1:8000/home/">
-                {% load static %}
-                <img src="{% static 'Logo_Collectify.jpg' %}"
-                    alt="Collectify Logo" width="80">
-            </a>
-        </div>
-
-        {% if user.is_authenticated %}
-            <div class="login">
-                <a href="http://127.0.0.1:8000/logout/">Loguot</a>
-            </div>
-        {% else %}
-            <!-- Login/Register -->
-            <div class="login">
-                <a href="http://127.0.0.1:8000/login/">Login / Register</a>
-            </div>
-        {% endif %}
-
-        <!-- Navigation Titles -->
-        <div class="navigationbar">
-            <a class="inline_block" href="http://127.0.0.1:8000/home/">
-                <h1 class="navigationtitle, currenttitel">Home</h1>
-            </a>
-            <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
-                <h1 class="navigationtitle">My Collection</h1>
-            </a>
-        </div>
+{% extends "base.html" %}
+{% block currenttitel_home %}currenttitel{% endblock currenttitel_home %}
+{% block content %}
         <div class="mainblock">
             <h1>
                 Welcome to our Page!
             </h1>
             <p>
-                Are you a fanatic collector? You wanna have a simple overview
-                over your hole Collection fast and easy? <br>
-                Than you are compleately on the correct website. 
-                Collectify is a simple plattform to load up all your Items in a Collection up
-                and have a very good overview over them.
+                Are you a fanatic collector? You wanna have a simple overview over your hole Collection fast and easy? <br>
+                Than you are compleately on the correct website. <br>
+                Collectify is a simple plattform to load up all your Items in a Collection up and have a very good overview over them.
             </p>
         </div>
     </body>
 </html>
+{% endblock content %}

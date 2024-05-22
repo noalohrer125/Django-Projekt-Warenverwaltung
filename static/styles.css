@@ -61,14 +61,13 @@ button:hover {
 
 .currenttitel {
     border-bottom: 1px solid rgba(0, 0, 0, 0.02);
-    margin: auto;
     text-decoration: solid underline;
 }
 
 .mainblock {
     text-align: center;
     position: absolute;
-    top: 25%;
+    top: 30%;
     left: 0;
     right: 0;
 }
@@ -200,4 +199,22 @@ table {
 input:hover {
     cursor: pointer;
     border-radius: 5px;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+}
+
+.menu_burger {
+    justify-self: end;
+    align-self: start;
+}
+
+
+.menu_content {
+    justify-self: end;
+    align-self: start;
+    display: contents;
 }

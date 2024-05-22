@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Collectify</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css">
+    </head>
+    <body class="container">
+        <div class="logo">
+            <a href="http://127.0.0.1:8000/home/">
+                {% load static %}
+                <img src="{% static 'Logo_Collectify.jpg' %}" alt="Collectify Logo" width="80">
+            </a>
+        </div>
+        <script>
+            function expand_collapse_menu() {
+                menu = document.getElementsByClassName('menu_content')
+
+                if (menu.style.display === "none") {
+                    menu.style.display = "block"
+                }
+                else {
+                    menu.style.display = "none"
+                }
+            }
+        </script>
+        <div class="menu_burger">
+            <button onclick="expand_collapse_menu()" type="submit">☰</button>
+        </div>
+        <div class="menu_content">
+            {% block user_is_authenticated %}
+                <div class="user_is_authenticated">
+                    {% if user.is_authenticated %}
+                    <div class="login">
+                        <a href="http://127.0.0.1:8000/logout/">Logout</a>
+                    </div>
+                    {% else %}
+                        <!-- Login/Register -->
+                        <div class="login">
+                            <a href="http://127.0.0.1:8000/login/">Login / Register</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endblock user_is_authenticated %}
+        </div>
+        {% block navigationtitle %}
+            <!-- Navigation Titles -->
+            <div class="navigationbar">
+                <a class="inline_block" href="http://127.0.0.1:8000/home/">
+                    <h1 class="navigationtitle, {% block currenttitel_home %}{% endblock currenttitel_home %}">Home</h1>
+                </a>
+                <a class="inline_block" href="http://127.0.0.1:8000/mycollection/">
+                    <h1 class="navigationtitle, {% block currenttitel_mycollection %}{% endblock currenttitel_mycollection %}">My Collection</h1>
+                </a>
+            </div>
+        {% endblock navigationtitle %}
+        {% block content %}{% endblock content %}
