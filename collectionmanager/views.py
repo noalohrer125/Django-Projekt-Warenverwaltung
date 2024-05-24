@@ -1,10 +1,11 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import CategoryForm, WareForm
 from .forms import RegisterForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from .models import Waren
 from django.shortcuts import render, redirect
@@ -75,6 +76,7 @@ def login(request):
         # Wenn der User valide ist wird er angemeldet und auf die Home Seite umgeleitet
         if user is not None:
             auth_login(request, user)
+            send_e_mail()
             return redirect('http://127.0.0.1:8000/home/')
         # Wenn die Userinformationen inkorrekt sind erscheint eine Nachricht mit 'Login Incorrect' und der User wird auf die Login Seite umgeleitet
         else:
@@ -110,3 +112,16 @@ def delete_product(request, Name):
         return HttpResponseRedirect('http://127.0.0.1:8000/mycollection/')
     else:
         return redirect('http://127.0.0.1:8000/mycollection/')
+
+# E-mail Versand
+from django.core.mail import send_mail
+
+def send_e_mail():
+    send_mail(
+        'Collectionmanager',
+        'Somebody logged in to your Collectionmanager-Webapp.',
+        'noalohrer125@gmail.com',
+        ['noalohrer125@gmail.com'],
+        fail_silently=False,
+    )
+    return HttpResponse('E-Mail sended')

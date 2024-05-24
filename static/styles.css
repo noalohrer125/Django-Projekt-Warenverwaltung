@@ -60,6 +60,9 @@ button:hover {
 
 .mainblock {
     text-align: center;
+    align-content: center;
+    justify-self: center;
+    transform: translateY(-80%);
 }
 
 .loginform {

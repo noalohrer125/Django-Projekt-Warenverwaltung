@@ -27,6 +27,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from collectionmanager.views import delete_product
 from collectionmanager.views import add_category
+from collectionmanager.views import send_e_mail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,4 +40,5 @@ urlpatterns = [
     path('addproduct/', add_product),
     path('addcategory/', add_category),
     path('delete_product/<str:Name>/', delete_product, name='delete_product'),
+    path('send-email/', send_e_mail, name='send_email'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
