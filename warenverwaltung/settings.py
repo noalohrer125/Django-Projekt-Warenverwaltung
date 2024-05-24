@@ -128,9 +128,9 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-apikey = "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"
 # Settings for sending E-Mails
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" 
+from collectionmanager.apikeys import apikey
 SENDGRID_API_KEY = apikey
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey' # das ist genau der Wert 'apikey'
