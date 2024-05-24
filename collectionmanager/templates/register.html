@@ -1,15 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-        {% if user.is_authenticated %}
-            <div class="login">
-                <a href="http://127.0.0.1:8000/logout/">Logout</a>
-            </div>
-        {% else %}
-            <!-- Login/Register -->
-            <div class="login">
-                <a href="http://127.0.0.1:8000/login/">Login / Register</a>
-            </div>
-        {% endif %}
         <div class="loginform">
             
             {% if messages %}

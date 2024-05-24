@@ -20,7 +20,7 @@ class Regale(models.Model):
         return self.name
 
 class Waren(models.Model):
-    producer = models.CharField(max_length=200)
+    brand = models.CharField(max_length=200)
     name = models.CharField(max_length=200, unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)

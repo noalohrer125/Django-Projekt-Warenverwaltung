@@ -4,7 +4,12 @@
     text-decoration: none;
 }
 
+div {
+    display: grid;
+}
+
 h1 {
+    display: grid;
     font-size: 300%;
     color: rgb(82, 0, 150);
 }
@@ -15,18 +20,13 @@ h2 {
 }
 
 .logo {
-    position: absolute;
-    left: 1%;
-    top: 2%;
+    grid-area: logo;
+    margin: 2%;
 }
 
 .navigationbar {
-    padding: 1%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 12%;
-    left: 0;
-    right: 0;
+    grid-area: navigationbar;
     display: flex;
     justify-content: space-around;
     /* Optional: für gleichmäßigen Abstand zwischen den Elementen */
@@ -39,7 +39,7 @@ h2 {
 }
 
 .navigationtitle {
-    margin: auto;
+    margin: 5%;
     width: 60%;
 }
 
@@ -53,12 +53,6 @@ button:hover {
     cursor: pointer;
 }
 
-.login {
-    position: absolute;
-    top: 1%;
-    right: 1%;
-}
-
 .currenttitel {
     border-bottom: 1px solid rgba(0, 0, 0, 0.02);
     text-decoration: solid underline;
@@ -66,18 +60,13 @@ button:hover {
 
 .mainblock {
     text-align: center;
-    position: absolute;
-    top: 30%;
-    left: 0;
-    right: 0;
 }
 
 .loginform {
     text-align: center;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    justify-content: end;
+    align-content: start;
+    transform: translateY(-80%);
 }
 
 button:hover {
@@ -174,7 +163,7 @@ table {
 
 .add_product_div {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 25%;
     width: 50%;
 }
@@ -203,18 +192,37 @@ input:hover {
 
 .container {
     display: grid;
+    grid-template-areas:
+    'logo menu'
+    'navigationbar navigationbar'
+    'content content';
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    grid-template-rows: 12%  10% auto;
+    grid-template-columns: 50% 50%;
+}
+
+.menu {
+    grid-area: menu;
+    justify-self: end;
+    align-self: start;
+    margin: 2%;
+}
+
+.menu_content {
+    display: none;
+}
+
+.content {
+    grid-area: content;
+    justify-content: center;
+    align-content: center;
 }
 
 .menu_burger {
+    width: 10px;
     justify-self: end;
-    align-self: start;
-}
-
-
-.menu_content {
-    justify-self: end;
-    align-self: start;
-    display: contents;
+    margin-right: 15px;
+    margin-bottom: 10px;
 }

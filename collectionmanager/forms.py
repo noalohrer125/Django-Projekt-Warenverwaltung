@@ -28,7 +28,7 @@ class WareForm(forms.ModelForm):
     class Meta:
         model = Waren
         fields = [
-            'producer',
+            'brand',
             'name',
             'description',
             'price',
