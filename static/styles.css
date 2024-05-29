@@ -10,13 +10,13 @@ div {
 
 h1 {
     display: grid;
-    font-size: 300%;
+    font-size: 3vw;
     color: rgb(82, 0, 150);
 }
 
 h2 {
     color: rgb(13, 0, 192);
-    font-size: 250%;
+    font-size: 2.5vw;
 }
 
 .logo {
@@ -95,7 +95,7 @@ td {
 
 .sign_up_table {
     text-align: left;
-    font-size: 120%;
+    font-size: 1vw;
 }
 
 .collectionelement {
