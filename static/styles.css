@@ -9,24 +9,26 @@ div {
 }
 
 h1 {
+    margin: 0;
     display: grid;
-    font-size: 3vw;
+    font-size: 3vmax;
     color: rgb(82, 0, 150);
 }
 
 h2 {
     color: rgb(13, 0, 192);
-    font-size: 2.5vw;
+    font-size: 2.5vmax;
 }
 
 .logo {
     grid-area: logo;
-    margin: 2%;
+    margin: 0.5vmax;
 }
 
 .navigationbar {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     grid-area: navigationbar;
+    align-self: center;
     display: flex;
     justify-content: space-around;
     /* Optional: für gleichmäßigen Abstand zwischen den Elementen */
@@ -39,7 +41,6 @@ h2 {
 }
 
 .navigationtitle {
-    margin: 5%;
     width: 60%;
 }
 
@@ -49,7 +50,12 @@ button {
 }
 
 button:hover {
-    background-color: #00ff0d;
+    background-color: #00eeff;
+    cursor: pointer;
+}
+
+input:hover {
+    background-color: #00eeff;
     cursor: pointer;
 }
 
@@ -72,10 +78,6 @@ button:hover {
     transform: translateY(-80%);
 }
 
-button:hover {
-    cursor: pointer;
-}
-
 .button-register {
     color: rgb(0, 110, 255);
     text-decoration: solid underline;
@@ -95,12 +97,13 @@ td {
 
 .sign_up_table {
     text-align: left;
-    font-size: 1vw;
+    font-size: 1vmax;
 }
 
 .collectionelement {
-    margin-bottom: 6%;
-    border-radius: 5px;
+    width: 60vmax;
+    margin: 2vmax;
+    border-radius: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
@@ -117,20 +120,19 @@ td {
 
 .addproduct_link {
     text-align: center;
-    font-size: 120%;
-    position: absolute;
-    left: 35%;
-    right: 45%;
+    width: 10vmax;
+    font-size: 1vmax;
     bottom: 1%;
     border-radius: 10px;
     border: solid black 1px;
+    margin: 1vmax;
 }
 
 .mycollection {
-    position: absolute;
-    top: 30%;
-    left: 25%;
-    width: 50%;
+    margin-top: 2vmax;
+    display: flex;
+    flex-direction: column; /* This ensures elements stack vertically */
+    align-items: center; /* Centers the elements horizontally */
 }
 
 .addproduct {
@@ -172,9 +174,8 @@ table {
 }
 
 .addproduct_link:hover {
-    color: blue;
+    background-color: #00eeff;
     cursor: pointer;
-    text-decoration: solid underline;
 }
 
 .delete_product {
@@ -183,13 +184,9 @@ table {
     top: 0;
 }
 
-#delete:hover {
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-input:hover {
-    cursor: pointer;
+#delete {
+    justify-self: end;
+    width: 10%;
     border-radius: 5px;
 }
 
@@ -200,7 +197,7 @@ input:hover {
     'navigationbar navigationbar'
     'content content';
     height: 100vh;
-    width: 100vw;
+    width: 100vmax;
     margin: 0;
     grid-template-rows: 12%  10% auto;
     grid-template-columns: 50% 50%;
@@ -224,8 +221,12 @@ input:hover {
 }
 
 .menu_burger {
-    width: 10px;
     justify-self: end;
-    margin-right: 15px;
-    margin-bottom: 10px;
+    margin-right: 0.5vmax;
+    margin-top: 0.5vmax;
+}
+
+.menu_burger_button {
+    width: auto;
+    font-size: 1vmax;
 }

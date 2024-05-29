@@ -44,7 +44,7 @@ def add_product(request):
             ware.save()
             return redirect('http://127.0.0.1:8000/mycollection')  # Umleiten nach dem Speichern
         else:
-            print('Productname is allready used. Please chose an other one!')
+            print('Add_Product-Form is not valid!')
     else:
         form = WareForm()
 
