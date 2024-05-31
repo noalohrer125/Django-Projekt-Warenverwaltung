@@ -1,6 +1,4 @@
 * {
-    background-color: rgb(255, 255, 255);
-    color: black;
     text-decoration: none;
 }
 
@@ -12,23 +10,19 @@ h1 {
     margin: 0;
     display: grid;
     font-size: 3vmax;
-    color: rgb(82, 0, 150);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
-    color: rgb(13, 0, 192);
     font-size: 2.5vmax;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
     grid-area: logo;
     margin: 0.5vmax;
+    border-radius: 15px;
 }
 
 .navigationbar {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     grid-area: navigationbar;
     align-self: center;
     display: flex;
@@ -45,22 +39,18 @@ h2 {
 }
 
 button {
-    border: solid black 1px;
     border-radius: 5px;
 }
 
 button:hover {
-    background-color: #00eeff;
     cursor: pointer;
 }
 
 input:hover {
-    background-color: #00eeff;
     cursor: pointer;
 }
 
 .currenttitel {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
     text-decoration: solid underline;
 }
 
@@ -75,12 +65,6 @@ input:hover {
     text-align: center;
     justify-content: end;
     align-content: start;
-    transform: translateY(-80%);
-}
-
-.button-register {
-    color: rgb(0, 110, 255);
-    text-decoration: solid underline;
 }
 
 td {
@@ -104,7 +88,6 @@ td {
     width: 60vmax;
     margin: 2vmax;
     border-radius: 20px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
@@ -124,7 +107,6 @@ td {
     font-size: 1vmax;
     bottom: 1%;
     border-radius: 10px;
-    border: solid black 1px;
     margin: 1vmax;
 }
 
@@ -168,14 +150,7 @@ table {
 }
 
 .addproduct_link:hover {
-    background-color: #00eeff;
     cursor: pointer;
-}
-
-.delete_product {
-    position: absolute;
-    left: 100;
-    top: 0;
 }
 
 #delete {

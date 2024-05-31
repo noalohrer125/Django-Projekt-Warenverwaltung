@@ -1,0 +1,52 @@
+* {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+h1 {
+    color: rgb(81, 0, 148);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: rgb(0, 106, 192);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navigationbar {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+button {
+    border: solid rgb(0, 0, 0) 1px;
+}
+
+button:hover {
+    background-color: #00eeff;
+}
+
+input:hover {
+    background-color: #00eeff;
+}
+
+.currenttitel {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.button-register {
+    color: rgb(0, 110, 255);
+}
+
+.collectionelement {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.addproduct_link {
+    border: solid rgb(0, 0, 0) 1px;
+}
+
+.addproduct_link:hover {
+    background-color: #00eeff;
+    cursor: pointer;
+}

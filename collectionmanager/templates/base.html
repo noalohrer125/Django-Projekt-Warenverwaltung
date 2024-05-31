@@ -5,16 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Collectify</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css">
-    </head>
-    <body class="container">
-        <div class="logo">
-            <a href="http://127.0.0.1:8000/home/">
-                {% load static %}
-                <img src="{% static 'Logo_Collectify.jpg' %}" alt="Collectify Logo" width="80">
-            </a>
-        </div>
+        <!-- Default stylesheet -->
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <!-- Dark-/ Lightmode stylesheet -->
+        <link href="{% static 'styles_light.css' %}" data-toggle="theme" data-theme-mode="light">
+        <link href="{% static 'styles_dark.css' %}" data-toggle="theme" data-theme-mode="dark">
         <script>
+            // Get the theme mode from localStorage
+            let themeMode = localStorage.getItem('themeMode');
+
+            // Find the appropriate stylesheet link based on the theme mode
+            let themeFile = document.querySelector('[data-toggle="theme"][data-theme-mode="' + themeMode + '"]');
+            themeFile.rel = 'stylesheet';
+
+            function switch_theme() {
+                if (themeMode === 'dark') {
+                    themeMode = 'light'
+                }
+                else {
+                    themeMode = 'dark'
+                }
+                localStorage.setItem('themeMode', themeMode)
+                window.location.reload()
+            }
+
             function expand_collapse_menu() {
                 menu = document.getElementsByClassName('menu_content')[0]
                 if (menu.style.display === "grid") {
@@ -25,6 +39,14 @@
                 }
             }
         </script>
+    </head>
+    <body class="container">
+        <div class="logo">
+            <a href="http://127.0.0.1:8000/home/">
+                {% load static %}
+                <img src="{% static 'Logo_Collectify.jpg' %}" alt="Collectify Logo" width="80">
+            </a>
+        </div>
         <div class="menu">
             <div class="menu_burger">
                 <button class="menu_burger_button" onclick="expand_collapse_menu()" type="submit">☰</button>
@@ -44,6 +66,7 @@
                         {% endif %}
                     </div>
                 {% endblock user_is_authenticated %}
+                <button onclick="switch_theme()">Dark- / Lightmode</button>
             </div>
         </div>
         {% block navigationtitle %}

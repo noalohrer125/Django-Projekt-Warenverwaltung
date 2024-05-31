@@ -6,7 +6,7 @@
             <div class="collectionelement">
                 <table class="collectiontable">
                     <tr>
-                        <form class="delete_product" action="{% url 'delete_product' Name=ware.name %}" method="post">
+                        <form action="{% url 'delete_product' Name=ware.name %}" method="post">
                             {% csrf_token %}
                             <input id="delete" type="submit" value="Delete">
                         </form>
