@@ -13,11 +13,13 @@ h1 {
     display: grid;
     font-size: 3vmax;
     color: rgb(82, 0, 150);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
     color: rgb(13, 0, 192);
     font-size: 2.5vmax;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -31,13 +33,11 @@ h2 {
     align-self: center;
     display: flex;
     justify-content: space-around;
-    /* Optional: für gleichmäßigen Abstand zwischen den Elementen */
 }
 
 .inline_block {
     flex: 1;
     text-align: center;
-    /* Optional: zentriert den Text innerhalb des Elements */
 }
 
 .navigationtitle {
@@ -66,7 +66,7 @@ input:hover {
 
 .mainblock {
     text-align: center;
-    align-content: center;
+    align-self: center;
     justify-self: center;
     transform: translateY(-80%);
 }
@@ -135,10 +135,6 @@ td {
     align-items: center; /* Centers the elements horizontally */
 }
 
-.addproduct {
-    display: inline;
-}
-
 .underline {
     text-decoration: solid underline;
 }
@@ -167,10 +163,8 @@ table {
 }
 
 .add_product_div {
-    position: absolute;
-    top: 40%;
-    left: 25%;
-    width: 50%;
+    justify-self: center;
+    align-self: center;
 }
 
 .addproduct_link:hover {
@@ -199,7 +193,7 @@ table {
     height: 100vh;
     width: 100vmax;
     margin: 0;
-    grid-template-rows: 12%  10% auto;
+    grid-template-rows: 12%  8% auto;
     grid-template-columns: 50% 50%;
 }
 
@@ -217,7 +211,9 @@ table {
 .content {
     grid-area: content;
     justify-content: center;
-    align-content: center;
+    overflow: scroll;
+    min-width: 0; /* Add this line */
+    overflow-x: hidden;
 }
 
 .menu_burger {
