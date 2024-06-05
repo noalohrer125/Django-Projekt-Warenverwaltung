@@ -50,3 +50,7 @@ input:hover {
     background-color: #00eeff;
     cursor: pointer;
 }
+
+#delete {
+    border: solid rgb(0, 0, 0) 1px;
+}

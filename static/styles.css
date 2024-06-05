@@ -26,16 +26,11 @@ h2 {
     grid-area: navigationbar;
     align-self: center;
     display: flex;
-    justify-content: space-around;
 }
 
 .inline_block {
     flex: 1;
     text-align: center;
-}
-
-.navigationtitle {
-    width: 60%;
 }
 
 button {
@@ -57,8 +52,6 @@ input:hover {
 .mainblock {
     text-align: center;
     align-self: center;
-    justify-self: center;
-    transform: translateY(-80%);
 }
 
 .loginform {
@@ -85,7 +78,7 @@ td {
 }
 
 .collectionelement {
-    width: 60vmax;
+    width: 60vw;
     margin: 2vmax;
     border-radius: 20px;
     transition: all 0.3s ease;
@@ -155,7 +148,7 @@ table {
 
 #delete {
     justify-self: end;
-    width: 10%;
+    width: 60px;
     border-radius: 5px;
 }
 
@@ -166,9 +159,9 @@ table {
     'navigationbar navigationbar'
     'content content';
     height: 100vh;
-    width: 100vmax;
+    width: 100vw;
     margin: 0;
-    grid-template-rows: 12%  8% auto;
+    grid-template-rows: 150px  100px auto;
     grid-template-columns: 50% 50%;
 }
 
@@ -187,7 +180,7 @@ table {
     grid-area: content;
     justify-content: center;
     overflow: scroll;
-    min-width: 0; /* Add this line */
+    min-width: 0;
     overflow-x: hidden;
 }
 
